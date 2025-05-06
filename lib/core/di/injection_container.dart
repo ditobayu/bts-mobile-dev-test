@@ -12,7 +12,9 @@ import 'package:http/http.dart' as http;
 import 'package:test_project/features/todo/data/data_sources/remote_todo_data_sources.dart';
 import 'package:test_project/features/todo/data/repository/todo_repository_impl.dart';
 import 'package:test_project/features/todo/domain/repository/todo_repository.dart';
+import 'package:test_project/features/todo/domain/usecases/delete_todo.dart';
 import 'package:test_project/features/todo/domain/usecases/get_todos.dart';
+import 'package:test_project/features/todo/domain/usecases/save_todo.dart';
 import 'package:test_project/features/todo/presentation/bloc/todos/bloc/remote_todos_bloc.dart';
 
 final sl = GetIt.instance;
@@ -40,5 +42,8 @@ Future<void> init() async {
   sl.registerSingleton<TodoRepository>(TodoRepositoryImpl(sl()));
 
   sl.registerSingleton<GetTodosUsecase>(GetTodosUsecase(sl()));
-  sl.registerFactory(() => RemoteTodosBloc(sl()));
+  sl.registerSingleton<SaveTodoUsecase>(SaveTodoUsecase(sl()));
+  sl.registerSingleton<DeleteTodoUsecase>(DeleteTodoUsecase(sl()));
+
+  sl.registerFactory(() => RemoteTodosBloc(sl(),sl(),sl()));
 }
