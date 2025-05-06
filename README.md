@@ -1,16 +1,41 @@
-# test_project
+# ✅ Flutter To-Do List Application
 
-A new Flutter project.
+A simple yet functional To-Do List Application built with Flutter, developed as part of a frontend recruitment technical test. This app allows users to register, log in, and manage personal checklists and to-do items securely using a backend API.
 
-## Getting Started
+## 📋 Features
 
-This project is a starting point for a Flutter application.
+- 🔐 **Authentication**
+  - User Login (Bearer Token)
+  - User Registration
 
-A few resources to get you started if this is your first Flutter project:
+- 📒 **Checklist Management**
+  - Create a checklist (color-coded like Google Keep)
+  - View list of all checklists
+  - View checklist details
+  - Delete checklist
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- 📝 **To-Do Item Management (Inside Checklist)**
+  - Create to-do items within a checklist
+  - View item details
+  - Edit items (title/description)
+  - Mark items as completed
+  - Delete items
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+> ❗ All checklist and item features are only accessible after user authentication.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Flutter SDK (3.29.3)
+- Dart SDK
+- Emulator or physical device for testing
+- Android Studio / VS Code
+- Internet connection (API hosted online)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   https://github.com/ditobayu/bts-mobile-dev-test.git
+   cd bts-mobile-dev-test
