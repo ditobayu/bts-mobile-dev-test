@@ -13,9 +13,11 @@ import 'package:test_project/features/todo/data/data_sources/remote_todo_data_so
 import 'package:test_project/features/todo/data/repository/todo_repository_impl.dart';
 import 'package:test_project/features/todo/domain/repository/todo_repository.dart';
 import 'package:test_project/features/todo/domain/usecases/delete_todo.dart';
+import 'package:test_project/features/todo/domain/usecases/get_todo_detail.dart';
 import 'package:test_project/features/todo/domain/usecases/get_todos.dart';
 import 'package:test_project/features/todo/domain/usecases/save_todo.dart';
-import 'package:test_project/features/todo/presentation/bloc/todos/bloc/remote_todos_bloc.dart';
+import 'package:test_project/features/todo/presentation/bloc/todo/bloc/remote_todo_bloc.dart';
+import 'package:test_project/features/todo/presentation/bloc/todos/remote/remote_todos_bloc.dart';
 
 final sl = GetIt.instance;
 
@@ -44,6 +46,8 @@ Future<void> init() async {
   sl.registerSingleton<GetTodosUsecase>(GetTodosUsecase(sl()));
   sl.registerSingleton<SaveTodoUsecase>(SaveTodoUsecase(sl()));
   sl.registerSingleton<DeleteTodoUsecase>(DeleteTodoUsecase(sl()));
+  sl.registerSingleton<GetTodoDetailUsecase>(GetTodoDetailUsecase(sl()));
 
   sl.registerFactory(() => RemoteTodosBloc(sl(),sl(),sl()));
+  sl.registerFactory(() => RemoteTodoBloc(sl()));
 }

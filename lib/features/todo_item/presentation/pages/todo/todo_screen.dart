@@ -76,46 +76,16 @@ class _TodoScreenState extends State<TodoScreen> {
                 itemCount: state.todos.length,
                 itemBuilder: (context, index) {
                   final todo = state.todos[index];
-                    return GestureDetector(
-                      onTap: () {
-                        context.push('/todos/${todo.id}');
+                  return ListTile(
+                    title: Text(todo.name),
+                    subtitle: Text('ID: ${todo.id}'),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete, color: Colors.red),
+                      onPressed: () {
+                        BlocProvider.of<RemoteTodosBloc>(context).add(DeleteTodoEvent(todo.id));
                       },
-                      child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(8),
-                        boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 4,
-                          offset: const Offset(0, 2),
-                        ),
-                        ],
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                          Text(
-                            todo.name,
-                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                          ),
-                          ],
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.delete, color: Colors.red),
-                          onPressed: () {
-                          BlocProvider.of<RemoteTodosBloc>(context).add(DeleteTodoEvent(todo.id));
-                          },
-                        ),
-                        ],
-                      ),
-                      ),
-                    );
+                    ),
+                  );
                 },
               );
             } else if (state is RemoteTodosError) {

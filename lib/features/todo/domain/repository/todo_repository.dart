@@ -5,4 +5,5 @@ abstract class TodoRepository {
   Future<DataState<List<TodoEntity>>> getTodos();
   Future<DataState<void>> saveTodo(String name);
   Future<DataState<void>> deleteTodo(int id);
+  Future<DataState<TodoEntity>> getTodoDetail(int id);
 }

@@ -69,4 +69,24 @@ class RemoteTodoDataSources {
       throw Exception('Failed to delete todo');
     }
   }
+
+  Future<TodoModel> getTodoDetail(int id) async {
+    final token = await localDataSource.getToken();
+    if (token == null) {
+      throw Exception('No token found');
+    }
+    final response = await client.get(
+      Uri.parse('$apiBaseUrl/checklist/$id/item'),
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body)['data'];
+      return TodoModel.fromJson(data);
+    } else {
+      throw Exception('Failed to load todo detail');
+    }
+  }
 }

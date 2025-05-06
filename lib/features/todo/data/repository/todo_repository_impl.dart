@@ -39,5 +39,15 @@ class TodoRepositoryImpl implements TodoRepository {
     } catch (e) {
       return DataError(e.toString());
     }
+  }
+  
+  @override
+  Future<DataState<TodoEntity>> getTodoDetail(int id) async {
+    try {
+      final response = await _remoteTodoDataSources.getTodoDetail(id);
+      return DataSuccess(response);
+    } catch (e) {
+      return DataError(e.toString());
+    }
   } 
 }
